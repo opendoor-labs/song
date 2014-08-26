@@ -1,0 +1,16 @@
+{
+  "name": "song",
+  "version": "0.0.0",
+  "description": "a deploy song via curl",
+  "main": "index.js",
+  "dependencies": {
+    "applescript": "^0.2.1",
+    "express": "^4.8.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Visnu Pitiyanuvath <visnupx@gmail.com>",
+  "license": "ISC"
+}

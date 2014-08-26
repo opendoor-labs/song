@@ -1,6 +1,7 @@
 #!/bin/usr/env node
 
-var applescript = require('applescript')
+var fs = require('fs')
+  , applescript = require('applescript')
   , express = require('express')
   , app = express()
 
@@ -18,4 +19,13 @@ app.delete('/play', function(req, res, next) {
   })
 })
 
-app.listen(1337)
+var port = process.argv[2] || 1337
+app.listen(port, function() {
+  console.log('Listening on 0.0.0.0:' + port)
+
+  // downgrade process user to owner of this file
+  fs.stat(__filename, function(err, stats) {
+    if (err) throw err
+    process.setuid(stats.uid)
+  })
+})

@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "applescript": "^0.2.1",
+    "body-parser": "^1.9.2",
     "express": "^4.8.5"
   },
   "devDependencies": {},

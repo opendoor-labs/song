@@ -3,10 +3,15 @@
 var fs = require('fs')
   , applescript = require('applescript')
   , express = require('express')
+  , bodyParser = require('body-parser')
   , app = express()
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
+
 app.post('/play', function(req, res, next) {
-  applescript.execFile('play.applescript', function(err) {
+  var song = req.param('song') || 'Guile';
+  applescript.execFile('play.applescript', [song], function(err) {
     if (err) return next(err)
     res.send('playing')
   })

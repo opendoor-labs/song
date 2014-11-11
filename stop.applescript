@@ -6,5 +6,6 @@ tell application "iTunes"
 	end repeat
 	
 	# stop playing
+  delay 1
 	stop
 end tell

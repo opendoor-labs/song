@@ -1,6 +1,7 @@
 #!/bin/usr/env node
 
 var fs = require('fs')
+  , spawn = require('child_process').spawn
   , applescript = require('applescript')
   , express = require('express')
   , bodyParser = require('body-parser')
@@ -14,6 +15,14 @@ app.post('/play', function(req, res, next) {
   applescript.execFile('play.applescript', [song], function(err) {
     if (err) return next(err)
     res.send('playing')
+  })
+})
+
+app.post('/say', function(req, res, next) {
+  var phrase = req.param('phrase') || 'What do you want me to say?';
+  var say = spawn('say', [phrase])
+  say.on('close', function(code) {
+    res.send('exit', code)
   })
 })
 

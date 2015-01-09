@@ -20,7 +20,7 @@ app.post('/play', function(req, res, next) {
 
 app.post('/say', function(req, res, next) {
   var phrase = req.param('phrase') || 'What do you want me to say?';
-  var say = spawn('say', [phrase])
+  var say = spawn('say', ['--rate=100', phrase])
   say.on('close', function(code) {
     res.send('exit', code)
   })
